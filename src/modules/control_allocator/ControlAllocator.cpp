@@ -304,17 +304,22 @@ ControlAllocator::Run()
 #endif
 
 	// Check if parameters have changed
-	if (_parameter_update_sub.updated() && !_armed) {
+	if (_parameter_update_sub.updated()) {
 		// clear update
+		PX4_INFO("PARAM UPDATED!");
 		parameter_update_s param_update;
 		_parameter_update_sub.copy(&param_update);
+		updateParams();
+		parameters_updated();
 
+		/*
 		if (_handled_motor_failure_bitmask == 0) {
 			// We don't update the geometry after an actuator failure, as it could lead to unexpected results
 			// (e.g. a user could add/remove motors, such that the bitmask isn't correct anymore)
 			updateParams();
 			parameters_updated();
 		}
+		*/
 	}
 
 	if (_num_control_allocation == 0 || _actuator_effectiveness == nullptr) {
@@ -512,7 +517,6 @@ ControlAllocator::update_effectiveness_matrix_if_needed(EffectivenessUpdateReaso
 				++actuator_idx;
 			}
 		}
-
 		// Handle failed actuators
 		if (_handled_motor_failure_bitmask) {
 			actuator_idx = 0;
@@ -536,7 +540,20 @@ ControlAllocator::update_effectiveness_matrix_if_needed(EffectivenessUpdateReaso
 
 		for (int i = 0; i < _num_control_allocation; ++i) {
 			_control_allocation[i]->setActuatorMin(minimum[i]);
-			_control_allocation[i]->setActuatorMax(maximum[i]);
+			if(_param_fault0.get()==1 && i==0) {
+				matrix::Vector<float, NUM_ACTUATORS> temp_max[6] = {};
+				temp_max[0](0) = 0.01f;
+				temp_max[0](1) = 1.f;
+				temp_max[0](2) = 1.f;
+				temp_max[0](3) = 1.f;
+				temp_max[0](4) = 1.f;
+				temp_max[0](5) = 1.f;
+
+				_control_allocation[i]->setActuatorMax(temp_max[i]);
+			}
+			else {
+				_control_allocation[i]->setActuatorMax(maximum[i]);
+			}
 			_control_allocation[i]->setSlewRateLimit(slew_rate[i]);
 
 			// Set all the elements of a row to 0 if that row has weak authority.

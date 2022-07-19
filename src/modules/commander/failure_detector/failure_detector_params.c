@@ -212,3 +212,17 @@ PARAM_DEFINE_FLOAT(FD_ACT_MOT_C2T, 2.0f);
  * @increment 100
  */
 PARAM_DEFINE_INT32(FD_ACT_MOT_TOUT, 100);
+
+/**
+ * Custom Failure introduction for Motor 0
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @group Failure Detector
+ * @unit ms
+ * @min 0
+ * @max 1
+ * @increment 1
+ */
+PARAM_DEFINE_INT32(CA_FAULT0, 0);
