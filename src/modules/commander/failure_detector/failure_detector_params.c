@@ -221,7 +221,7 @@ PARAM_DEFINE_INT32(FD_ACT_MOT_TOUT, 100);
  * @boolean
  * @group Fault Tolerant Control
  */
-PARAM_DEFINE_INT32(FTC_ENABLE, 0);
+PARAM_DEFINE_INT32(FTC_ENABLE, 1);
 
 /**
  * Custom Failure introduction for Motor 0
