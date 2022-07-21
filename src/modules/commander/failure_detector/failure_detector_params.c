@@ -214,15 +214,81 @@ PARAM_DEFINE_FLOAT(FD_ACT_MOT_C2T, 2.0f);
 PARAM_DEFINE_INT32(FD_ACT_MOT_TOUT, 100);
 
 /**
- * Custom Failure introduction for Motor 0
+ * Custom FTC Flag
  *
- * Motor failure triggers only if the throttle threshold and the
- * current to throttle threshold are violated for this time.
+ * Motor failure correction can be turned ON or OFF
  *
- * @group Failure Detector
+ * @group Fault Tolerant Control
  * @unit ms
  * @min 0
  * @max 1
  * @increment 1
  */
-PARAM_DEFINE_INT32(CA_FAULT0, 0);
+PARAM_DEFINE_INT32(FTC_ENABLE, 0);
+
+/**
+ * Custom Failure introduction for Motor 0
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FTC_M0, 1);
+
+/**
+ * Custom Failure introduction for Motor 1
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FTC_M1, 1);
+
+/**
+ * Custom Failure introduction for Motor 2
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FTC_M2, 1);
+
+/**
+ * Custom Failure introduction for Motor 3
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FTC_M3, 1);
+
+/**
+ * Custom Failure introduction for Motor 4
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FTC_M4, 1);
+
+/**
+ * Custom Failure introduction for Motor 5
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FTC_M5, 1);
+// PARAM_DEFINE_INT32(CA_FAULT0, 0);

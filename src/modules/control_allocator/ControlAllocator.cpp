@@ -49,6 +49,8 @@
 using namespace matrix;
 using namespace time_literals;
 
+int32_t lastFTC = 0;
+
 ControlAllocator::ControlAllocator() :
 	ModuleParams(nullptr),
 	ScheduledWorkItem(MODULE_NAME, px4::wq_configurations::rate_ctrl),
@@ -304,22 +306,26 @@ ControlAllocator::Run()
 #endif
 
 	// Check if parameters have changed
+	// if ((_parameter_update_sub.updated() && !_armed) || (_parameter_update_sub.updated() && _param_ftc_enable.get()==1)) {
 	if (_parameter_update_sub.updated()) {
 		// clear update
-		PX4_INFO("PARAM UPDATED!");
+		PX4_INFO("Param Update requested.");
 		parameter_update_s param_update;
 		_parameter_update_sub.copy(&param_update);
-		updateParams();
-		parameters_updated();
 
-		/*
-		if (_handled_motor_failure_bitmask == 0) {
+		// print_message(ORB_ID(parameter_update), param_update);
+
+		if(lastFTC != _param_ftc_enable.get()) {
+			PX4_INFO("You just changed FTC");
+			lastFTC = _param_ftc_enable.get();
+		}
+
+		if (_handled_motor_failure_bitmask == 0 || _param_ftc_enable.get()==1) {
 			// We don't update the geometry after an actuator failure, as it could lead to unexpected results
 			// (e.g. a user could add/remove motors, such that the bitmask isn't correct anymore)
 			updateParams();
 			parameters_updated();
 		}
-		*/
 	}
 
 	if (_num_control_allocation == 0 || _actuator_effectiveness == nullptr) {
@@ -540,14 +546,15 @@ ControlAllocator::update_effectiveness_matrix_if_needed(EffectivenessUpdateReaso
 
 		for (int i = 0; i < _num_control_allocation; ++i) {
 			_control_allocation[i]->setActuatorMin(minimum[i]);
-			if(_param_fault0.get()==1 && i==0) {
+			if(_param_ftc_enable.get()==0) {
 				matrix::Vector<float, NUM_ACTUATORS> temp_max[6] = {};
-				temp_max[0](0) = 0.01f;
-				temp_max[0](1) = 1.f;
-				temp_max[0](2) = 1.f;
-				temp_max[0](3) = 1.f;
-				temp_max[0](4) = 1.f;
-				temp_max[0](5) = 1.f;
+				// temp_max[0](0) = 0.01f;
+				temp_max[0](0) = static_cast< float >(_param_ftc_m0.get());
+				temp_max[0](1) = static_cast< float >(_param_ftc_m1.get());
+				temp_max[0](2) = static_cast< float >(_param_ftc_m2.get());
+				temp_max[0](3) = static_cast< float >(_param_ftc_m3.get());
+				temp_max[0](4) = static_cast< float >(_param_ftc_m4.get());
+				temp_max[0](5) = static_cast< float >(_param_ftc_m5.get());
 
 				_control_allocation[i]->setActuatorMax(temp_max[i]);
 			}

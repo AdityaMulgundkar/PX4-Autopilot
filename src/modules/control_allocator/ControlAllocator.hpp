@@ -208,7 +208,13 @@ private:
 		(ParamInt<px4::params::CA_METHOD>) _param_ca_method,
 		(ParamInt<px4::params::CA_FAILURE_MODE>) _param_ca_failure_mode,
 		(ParamInt<px4::params::CA_R_REV>) _param_r_rev,
-		(ParamInt<px4::params::CA_FAULT0>) _param_fault0
+		(ParamInt<px4::params::FTC_ENABLE>) _param_ftc_enable,
+		(ParamInt<px4::params::FTC_M0>) _param_ftc_m0,
+		(ParamInt<px4::params::FTC_M1>) _param_ftc_m1,
+		(ParamInt<px4::params::FTC_M2>) _param_ftc_m2,
+		(ParamInt<px4::params::FTC_M3>) _param_ftc_m3,
+		(ParamInt<px4::params::FTC_M4>) _param_ftc_m4,
+		(ParamInt<px4::params::FTC_M5>) _param_ftc_m5
 	)
 
 };
