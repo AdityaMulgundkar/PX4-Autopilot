@@ -50,6 +50,12 @@ using namespace matrix;
 using namespace time_literals;
 
 int32_t lastFTC = 0;
+int32_t lastM0 = 6.5;
+int32_t lastM1 = 6.5;
+int32_t lastM2 = 6.5;
+int32_t lastM3 = 6.5;
+int32_t lastM4 = 6.5;
+int32_t lastM5 = 6.5;
 
 ControlAllocator::ControlAllocator() :
 	ModuleParams(nullptr),
@@ -103,7 +109,14 @@ ControlAllocator::init()
 #ifndef ENABLE_LOCKSTEP_SCHEDULER // Backup schedule would interfere with lockstep
 	ScheduleDelayed(50_ms);
 #endif
-
+	// Fetch default params for FTC
+	lastFTC = _param_ftc_enable.get();
+	lastM0 = _param_faulty_m0.get();
+	lastM1 = _param_faulty_m1.get();
+	lastM2 = _param_faulty_m2.get();
+	lastM3 = _param_faulty_m3.get();
+	lastM4 = _param_faulty_m4.get();
+	lastM5 = _param_faulty_m5.get();
 	return true;
 }
 
@@ -313,18 +326,77 @@ ControlAllocator::Run()
 		parameter_update_s param_update;
 		_parameter_update_sub.copy(&param_update);
 
-		// print_message(ORB_ID(parameter_update), param_update);
-
-		if(lastFTC != _param_ftc_enable.get()) {
-			PX4_INFO("You just changed FTC");
-			lastFTC = _param_ftc_enable.get();
-		}
-
 		if (_handled_motor_failure_bitmask == 0 || _param_ftc_enable.get()==1) {
 			// We don't update the geometry after an actuator failure, as it could lead to unexpected results
 			// (e.g. a user could add/remove motors, such that the bitmask isn't correct anymore)
 			updateParams();
 			parameters_updated();
+		}
+
+		// print_message(ORB_ID(parameter_update), param_update);
+
+		if(lastFTC != _param_ftc_enable.get()) {
+			lastFTC = _param_ftc_enable.get();
+		}
+		if(lastM0 != _param_faulty_m0.get()) {
+			lastM0 = _param_faulty_m0.get();
+			if(lastM0==0) {
+				_param_ca_rotor0_ct.set(6.5);
+			}
+			else {
+				_param_ca_rotor0_ct.set(0);
+			}
+			_param_ca_rotor0_ct.commit();
+		}
+		if(lastM1 != _param_faulty_m1.get()) {
+			lastM1 = _param_faulty_m1.get();
+			if(lastM1==0) {
+				_param_ca_rotor1_ct.set(6.5);
+			}
+			else {
+				_param_ca_rotor1_ct.set(0);
+			}
+			_param_ca_rotor1_ct.commit();
+		}
+		if(lastM2 != _param_faulty_m2.get()) {
+			lastM2 = _param_faulty_m2.get();
+			if(lastM2==0) {
+				_param_ca_rotor2_ct.set(6.5);
+			}
+			else {
+				_param_ca_rotor2_ct.set(0);
+			}
+			_param_ca_rotor2_ct.commit();
+		}
+		if(lastM3 != _param_faulty_m3.get()) {
+			lastM3 = _param_faulty_m3.get();
+			if(lastM3==0) {
+				_param_ca_rotor3_ct.set(6.5);
+			}
+			else {
+				_param_ca_rotor3_ct.set(0);
+			}
+			_param_ca_rotor3_ct.commit();
+		}
+		if(lastM4 != _param_faulty_m4.get()) {
+			lastM4 = _param_faulty_m4.get();
+			if(lastM4==0) {
+				_param_ca_rotor4_ct.set(6.5);
+			}
+			else {
+				_param_ca_rotor4_ct.set(0);
+			}
+			_param_ca_rotor4_ct.commit();
+		}
+		if(lastM5 != _param_faulty_m5.get()) {
+			lastM5 = _param_faulty_m5.get();
+			if(lastM5==0) {
+				_param_ca_rotor5_ct.set(6.5);
+			}
+			else {
+				_param_ca_rotor5_ct.set(0);
+			}
+			_param_ca_rotor5_ct.commit();
 		}
 	}
 
@@ -549,12 +621,12 @@ ControlAllocator::update_effectiveness_matrix_if_needed(EffectivenessUpdateReaso
 			if(_param_ftc_enable.get()==0) {
 				matrix::Vector<float, NUM_ACTUATORS> temp_max[6] = {};
 				// temp_max[0](0) = 0.01f;
-				temp_max[0](0) = static_cast< float >(_param_ftc_m0.get());
-				temp_max[0](1) = static_cast< float >(_param_ftc_m1.get());
-				temp_max[0](2) = static_cast< float >(_param_ftc_m2.get());
-				temp_max[0](3) = static_cast< float >(_param_ftc_m3.get());
-				temp_max[0](4) = static_cast< float >(_param_ftc_m4.get());
-				temp_max[0](5) = static_cast< float >(_param_ftc_m5.get());
+				temp_max[0](0) = lastM0 == 0 ? 1.f : 0.01f;
+				temp_max[0](1) = lastM1 == 0 ? 1.f : 0.01f;
+				temp_max[0](2) = lastM2 == 0 ? 1.f : 0.01f;
+				temp_max[0](3) = lastM3 == 0 ? 1.f : 0.01f;
+				temp_max[0](4) = lastM4 == 0 ? 1.f : 0.01f;
+				temp_max[0](5) = lastM5 == 0 ? 1.f : 0.01f;
 
 				_control_allocation[i]->setActuatorMax(temp_max[i]);
 			}

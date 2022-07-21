@@ -218,11 +218,8 @@ PARAM_DEFINE_INT32(FD_ACT_MOT_TOUT, 100);
  *
  * Motor failure correction can be turned ON or OFF
  *
+ * @boolean
  * @group Fault Tolerant Control
- * @unit ms
- * @min 0
- * @max 1
- * @increment 1
  */
 PARAM_DEFINE_INT32(FTC_ENABLE, 0);
 
@@ -235,7 +232,7 @@ PARAM_DEFINE_INT32(FTC_ENABLE, 0);
  * @boolean
  * @group Fault Tolerant Control
  */
-PARAM_DEFINE_INT32(FTC_M0, 1);
+PARAM_DEFINE_INT32(FAULTY_M0, 0);
 
 /**
  * Custom Failure introduction for Motor 1
@@ -246,7 +243,7 @@ PARAM_DEFINE_INT32(FTC_M0, 1);
  * @boolean
  * @group Fault Tolerant Control
  */
-PARAM_DEFINE_INT32(FTC_M1, 1);
+PARAM_DEFINE_INT32(FAULTY_M1, 0);
 
 /**
  * Custom Failure introduction for Motor 2
@@ -257,7 +254,7 @@ PARAM_DEFINE_INT32(FTC_M1, 1);
  * @boolean
  * @group Fault Tolerant Control
  */
-PARAM_DEFINE_INT32(FTC_M2, 1);
+PARAM_DEFINE_INT32(FAULTY_M2, 0);
 
 /**
  * Custom Failure introduction for Motor 3
@@ -268,7 +265,7 @@ PARAM_DEFINE_INT32(FTC_M2, 1);
  * @boolean
  * @group Fault Tolerant Control
  */
-PARAM_DEFINE_INT32(FTC_M3, 1);
+PARAM_DEFINE_INT32(FAULTY_M3, 0);
 
 /**
  * Custom Failure introduction for Motor 4
@@ -279,7 +276,7 @@ PARAM_DEFINE_INT32(FTC_M3, 1);
  * @boolean
  * @group Fault Tolerant Control
  */
-PARAM_DEFINE_INT32(FTC_M4, 1);
+PARAM_DEFINE_INT32(FAULTY_M4, 0);
 
 /**
  * Custom Failure introduction for Motor 5
@@ -290,5 +287,5 @@ PARAM_DEFINE_INT32(FTC_M4, 1);
  * @boolean
  * @group Fault Tolerant Control
  */
-PARAM_DEFINE_INT32(FTC_M5, 1);
+PARAM_DEFINE_INT32(FAULTY_M5, 0);
 // PARAM_DEFINE_INT32(CA_FAULT0, 0);

@@ -209,12 +209,18 @@ private:
 		(ParamInt<px4::params::CA_FAILURE_MODE>) _param_ca_failure_mode,
 		(ParamInt<px4::params::CA_R_REV>) _param_r_rev,
 		(ParamInt<px4::params::FTC_ENABLE>) _param_ftc_enable,
-		(ParamInt<px4::params::FTC_M0>) _param_ftc_m0,
-		(ParamInt<px4::params::FTC_M1>) _param_ftc_m1,
-		(ParamInt<px4::params::FTC_M2>) _param_ftc_m2,
-		(ParamInt<px4::params::FTC_M3>) _param_ftc_m3,
-		(ParamInt<px4::params::FTC_M4>) _param_ftc_m4,
-		(ParamInt<px4::params::FTC_M5>) _param_ftc_m5
+		(ParamInt<px4::params::FAULTY_M0>) _param_faulty_m0,
+		(ParamInt<px4::params::FAULTY_M1>) _param_faulty_m1,
+		(ParamInt<px4::params::FAULTY_M2>) _param_faulty_m2,
+		(ParamInt<px4::params::FAULTY_M3>) _param_faulty_m3,
+		(ParamInt<px4::params::FAULTY_M4>) _param_faulty_m4,
+		(ParamInt<px4::params::FAULTY_M5>) _param_faulty_m5,
+		(ParamFloat<px4::params::CA_ROTOR0_CT>) _param_ca_rotor0_ct,
+		(ParamFloat<px4::params::CA_ROTOR1_CT>) _param_ca_rotor1_ct,
+		(ParamFloat<px4::params::CA_ROTOR2_CT>) _param_ca_rotor2_ct,
+		(ParamFloat<px4::params::CA_ROTOR3_CT>) _param_ca_rotor3_ct,
+		(ParamFloat<px4::params::CA_ROTOR4_CT>) _param_ca_rotor4_ct,
+		(ParamFloat<px4::params::CA_ROTOR5_CT>) _param_ca_rotor5_ct
 	)
 
 };
