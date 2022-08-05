@@ -196,7 +196,14 @@ private:
 		(ParamFloat<px4::params::CA_ACT12_MAX>) _param_ca_act12_max,
 		(ParamFloat<px4::params::CA_ACT13_MAX>) _param_ca_act13_max,
 		(ParamFloat<px4::params::CA_ACT14_MAX>) _param_ca_act14_max,
-		(ParamFloat<px4::params::CA_ACT15_MAX>) _param_ca_act15_max
+		(ParamFloat<px4::params::CA_ACT15_MAX>) _param_ca_act15_max,
+		(ParamInt<px4::params::FTC_ENABLE>) _param_ftc_enable,
+		(ParamInt<px4::params::FAULTY_M0>) _param_faulty_m0,
+		(ParamInt<px4::params::FAULTY_M1>) _param_faulty_m1,
+		(ParamInt<px4::params::FAULTY_M2>) _param_faulty_m2,
+		(ParamInt<px4::params::FAULTY_M3>) _param_faulty_m3,
+		(ParamInt<px4::params::FAULTY_M4>) _param_faulty_m4,
+		(ParamInt<px4::params::FAULTY_M5>) _param_faulty_m5
 	)
 
 };

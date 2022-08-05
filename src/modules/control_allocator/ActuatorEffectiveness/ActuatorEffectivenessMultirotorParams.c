@@ -43,6 +43,9 @@
  * Position of rotor 0 along X body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R0_PX, 0.0);
 
@@ -50,6 +53,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R0_PX, 0.0);
  * Position of rotor 0 along Y body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R0_PY, 0.0);
 
@@ -57,6 +63,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R0_PY, 0.0);
  * Position of rotor 0 along Z body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R0_PZ, 0.0);
 
@@ -89,6 +98,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R0_AZ, -1.0);
  * is the output signal sent to the motor controller.
  *
  * @group Control Allocation
+ * @min -10.0
+ * @max 10.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R0_CT, 0.0);
 
@@ -101,6 +113,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R0_CT, 0.0);
  * Use a negative value for a rotor with CW rotation.
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R0_KM, 0.05);
 
@@ -108,6 +123,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R0_KM, 0.05);
  * Position of rotor 1 along X body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R1_PX, 0.0);
 
@@ -115,6 +133,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R1_PX, 0.0);
  * Position of rotor 1 along Y body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R1_PY, 0.0);
 
@@ -154,6 +175,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R1_AZ, -1.0);
  * is the output signal sent to the motor controller.
  *
  * @group Control Allocation
+ * @min -10.0
+ * @max 10.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R1_CT, 0.0);
 
@@ -166,6 +190,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R1_CT, 0.0);
  * Use a negative value for a rotor with CW rotation.
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R1_KM, 0.05);
 
@@ -173,6 +200,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R1_KM, 0.05);
  * Position of rotor 2 along X body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R2_PX, 0.0);
 
@@ -180,6 +210,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R2_PX, 0.0);
  * Position of rotor 2 along Y body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R2_PY, 0.0);
 
@@ -219,6 +252,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R2_AZ, -1.0);
  * is the output signal sent to the motor controller.
  *
  * @group Control Allocation
+ * @min -10.0
+ * @max 10.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R2_CT, 0.0);
 
@@ -231,6 +267,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R2_CT, 0.0);
  * Use a negative value for a rotor with CW rotation.
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R2_KM, 0.05);
 
@@ -238,6 +277,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R2_KM, 0.05);
  * Position of rotor 3 along X body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R3_PX, 0.0);
 
@@ -245,6 +287,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R3_PX, 0.0);
  * Position of rotor 3 along Y body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R3_PY, 0.0);
 
@@ -284,6 +329,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R3_AZ, -1.0);
  * is the output signal sent to the motor controller.
  *
  * @group Control Allocation
+ * @min -10.0
+ * @max 10.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R3_CT, 0.0);
 
@@ -296,6 +344,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R3_CT, 0.0);
  * Use a negative value for a rotor with CW rotation.
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R3_KM, 0.05);
 
@@ -303,6 +354,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R3_KM, 0.05);
  * Position of rotor 4 along X body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R4_PX, 0.0);
 
@@ -310,6 +364,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R4_PX, 0.0);
  * Position of rotor 4 along Y body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R4_PY, 0.0);
 
@@ -349,6 +406,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R4_AZ, -1.0);
  * is the output signal sent to the motor controller.
  *
  * @group Control Allocation
+ * @min -10.0
+ * @max 10.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R4_CT, 0.0);
 
@@ -361,6 +421,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R4_CT, 0.0);
  * Use a negative value for a rotor with CW rotation.
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R4_KM, 0.05);
 
@@ -368,6 +431,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R4_KM, 0.05);
  * Position of rotor 5 along X body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R5_PX, 0.0);
 
@@ -375,6 +441,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R5_PX, 0.0);
  * Position of rotor 5 along Y body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R5_PY, 0.0);
 
@@ -414,6 +483,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R5_AZ, -1.0);
  * is the output signal sent to the motor controller.
  *
  * @group Control Allocation
+ * @min -10.0
+ * @max 10.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R5_CT, 0.0);
 
@@ -426,6 +498,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R5_CT, 0.0);
  * Use a negative value for a rotor with CW rotation.
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R5_KM, 0.05);
 
@@ -433,6 +508,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R5_KM, 0.05);
  * Position of rotor 6 along X body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R6_PX, 0.0);
 
@@ -440,6 +518,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R6_PX, 0.0);
  * Position of rotor 6 along Y body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R6_PY, 0.0);
 
@@ -479,6 +560,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R6_AZ, -1.0);
  * is the output signal sent to the motor controller.
  *
  * @group Control Allocation
+ * @min -10.0
+ * @max 10.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R6_CT, 0.0);
 
@@ -491,6 +575,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R6_CT, 0.0);
  * Use a negative value for a rotor with CW rotation.
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R6_KM, 0.05);
 
@@ -498,6 +585,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R6_KM, 0.05);
  * Position of rotor 7 along X body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R7_PX, 0.0);
 
@@ -505,6 +595,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R7_PX, 0.0);
  * Position of rotor 7 along Y body axis
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 6
  */
 PARAM_DEFINE_FLOAT(CA_MC_R7_PY, 0.0);
 
@@ -544,6 +637,9 @@ PARAM_DEFINE_FLOAT(CA_MC_R7_AZ, -1.0);
  * is the output signal sent to the motor controller.
  *
  * @group Control Allocation
+ * @min -10.0
+ * @max 10.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R7_CT, 0.0);
 
@@ -556,5 +652,8 @@ PARAM_DEFINE_FLOAT(CA_MC_R7_CT, 0.0);
  * Use a negative value for a rotor with CW rotation.
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_MC_R7_KM, 0.05);

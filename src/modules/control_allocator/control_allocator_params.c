@@ -93,6 +93,9 @@ PARAM_DEFINE_INT32(CA_AIR_SCALE_EN, 0);
  * Minimum value for actuator 0
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT0_MIN, 0.0);
 
@@ -100,6 +103,9 @@ PARAM_DEFINE_FLOAT(CA_ACT0_MIN, 0.0);
  * Minimum value for actuator 1
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT1_MIN, 0.0);
 
@@ -107,6 +113,9 @@ PARAM_DEFINE_FLOAT(CA_ACT1_MIN, 0.0);
  * Minimum value for actuator 2
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT2_MIN, 0.0);
 
@@ -114,6 +123,9 @@ PARAM_DEFINE_FLOAT(CA_ACT2_MIN, 0.0);
  * Minimum value for actuator 3
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT3_MIN, 0.0);
 
@@ -121,6 +133,9 @@ PARAM_DEFINE_FLOAT(CA_ACT3_MIN, 0.0);
  * Minimum value for actuator 4
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT4_MIN, 0.0);
 
@@ -128,6 +143,9 @@ PARAM_DEFINE_FLOAT(CA_ACT4_MIN, 0.0);
  * Minimum value for actuator 5
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT5_MIN, 0.0);
 
@@ -135,6 +153,9 @@ PARAM_DEFINE_FLOAT(CA_ACT5_MIN, 0.0);
  * Minimum value for actuator 6
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT6_MIN, 0.0);
 
@@ -142,6 +163,9 @@ PARAM_DEFINE_FLOAT(CA_ACT6_MIN, 0.0);
  * Minimum value for actuator 7
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT7_MIN, 0.0);
 
@@ -149,6 +173,9 @@ PARAM_DEFINE_FLOAT(CA_ACT7_MIN, 0.0);
  * Minimum value for actuator 8
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT8_MIN, 0.0);
 
@@ -156,6 +183,9 @@ PARAM_DEFINE_FLOAT(CA_ACT8_MIN, 0.0);
  * Minimum value for actuator 9
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT9_MIN, 0.0);
 
@@ -163,6 +193,9 @@ PARAM_DEFINE_FLOAT(CA_ACT9_MIN, 0.0);
  * Minimum value for actuator 10
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT10_MIN, 0.0);
 
@@ -170,6 +203,9 @@ PARAM_DEFINE_FLOAT(CA_ACT10_MIN, 0.0);
  * Minimum value for actuator 11
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT11_MIN, 0.0);
 
@@ -177,6 +213,9 @@ PARAM_DEFINE_FLOAT(CA_ACT11_MIN, 0.0);
  * Minimum value for actuator 12
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT12_MIN, 0.0);
 
@@ -184,6 +223,9 @@ PARAM_DEFINE_FLOAT(CA_ACT12_MIN, 0.0);
  * Minimum value for actuator 13
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT13_MIN, 0.0);
 
@@ -191,6 +233,9 @@ PARAM_DEFINE_FLOAT(CA_ACT13_MIN, 0.0);
  * Minimum value for actuator 14
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT14_MIN, 0.0);
 
@@ -198,6 +243,9 @@ PARAM_DEFINE_FLOAT(CA_ACT14_MIN, 0.0);
  * Minimum value for actuator 15
  *
  * @group Control Allocation
+ * @min -1.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT15_MIN, 0.0);
 
@@ -205,6 +253,9 @@ PARAM_DEFINE_FLOAT(CA_ACT15_MIN, 0.0);
  * Maximum value for actuator 0
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT0_MAX, 0.0);
 
@@ -212,6 +263,9 @@ PARAM_DEFINE_FLOAT(CA_ACT0_MAX, 0.0);
  * Maximum value for actuator 1
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT1_MAX, 0.0);
 
@@ -219,6 +273,9 @@ PARAM_DEFINE_FLOAT(CA_ACT1_MAX, 0.0);
  * Maximum value for actuator 2
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT2_MAX, 0.0);
 
@@ -226,6 +283,9 @@ PARAM_DEFINE_FLOAT(CA_ACT2_MAX, 0.0);
  * Maximum value for actuator 3
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT3_MAX, 0.0);
 
@@ -233,6 +293,9 @@ PARAM_DEFINE_FLOAT(CA_ACT3_MAX, 0.0);
  * Maximum value for actuator 4
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT4_MAX, 0.0);
 
@@ -240,6 +303,9 @@ PARAM_DEFINE_FLOAT(CA_ACT4_MAX, 0.0);
  * Maximum value for actuator 5
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT5_MAX, 0.0);
 
@@ -247,6 +313,9 @@ PARAM_DEFINE_FLOAT(CA_ACT5_MAX, 0.0);
  * Maximum value for actuator 6
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT6_MAX, 0.0);
 
@@ -254,6 +323,9 @@ PARAM_DEFINE_FLOAT(CA_ACT6_MAX, 0.0);
  * Maximum value for actuator 7
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT7_MAX, 0.0);
 
@@ -261,6 +333,9 @@ PARAM_DEFINE_FLOAT(CA_ACT7_MAX, 0.0);
  * Maximum value for actuator 8
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT8_MAX, 0.0);
 
@@ -268,6 +343,9 @@ PARAM_DEFINE_FLOAT(CA_ACT8_MAX, 0.0);
  * Maximum value for actuator 9
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT9_MAX, 0.0);
 
@@ -275,6 +353,9 @@ PARAM_DEFINE_FLOAT(CA_ACT9_MAX, 0.0);
  * Maximum value for actuator 10
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT10_MAX, 0.0);
 
@@ -282,6 +363,9 @@ PARAM_DEFINE_FLOAT(CA_ACT10_MAX, 0.0);
  * Maximum value for actuator 11
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT11_MAX, 0.0);
 
@@ -289,6 +373,9 @@ PARAM_DEFINE_FLOAT(CA_ACT11_MAX, 0.0);
  * Maximum value for actuator 12
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT12_MAX, 0.0);
 
@@ -296,6 +383,9 @@ PARAM_DEFINE_FLOAT(CA_ACT12_MAX, 0.0);
  * Maximum value for actuator 13
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT13_MAX, 0.0);
 
@@ -303,6 +393,9 @@ PARAM_DEFINE_FLOAT(CA_ACT13_MAX, 0.0);
  * Maximum value for actuator 14
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT14_MAX, 0.0);
 
@@ -310,5 +403,8 @@ PARAM_DEFINE_FLOAT(CA_ACT14_MAX, 0.0);
  * Maximum value for actuator 15
  *
  * @group Control Allocation
+ * @min 0.0
+ * @max 1.0
+ * @decimal 3
  */
 PARAM_DEFINE_FLOAT(CA_ACT15_MAX, 0.0);

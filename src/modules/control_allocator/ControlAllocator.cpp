@@ -49,6 +49,14 @@
 using namespace matrix;
 using namespace time_literals;
 
+int32_t lastFTC = 0;
+int32_t lastM0 = 0.0;
+int32_t lastM1 = 0.0;
+int32_t lastM2 = 0.0;
+int32_t lastM3 = 0.0;
+int32_t lastM4 = 0.0;
+int32_t lastM5 = 0.0;
+
 ControlAllocator::ControlAllocator() :
 	ModuleParams(nullptr),
 	WorkItem(MODULE_NAME, px4::wq_configurations::ctrl_alloc),
@@ -77,7 +85,14 @@ ControlAllocator::init()
 		PX4_ERR("vehicle_thrust_setpoint callback registration failed!");
 		return false;
 	}
-
+	// Fetch default params for FTC
+	lastFTC = _param_ftc_enable.get();
+	lastM0 = _param_faulty_m0.get();
+	lastM1 = _param_faulty_m1.get();
+	lastM2 = _param_faulty_m2.get();
+	lastM3 = _param_faulty_m3.get();
+	lastM4 = _param_faulty_m4.get();
+	lastM5 = _param_faulty_m5.get();
 	return true;
 }
 
@@ -131,6 +146,24 @@ ControlAllocator::parameters_updated()
 	actuator_max(13) = _param_ca_act13_max.get();
 	actuator_max(14) = _param_ca_act14_max.get();
 	actuator_max(15) = _param_ca_act15_max.get();
+
+	if(_param_ftc_enable.get()==0) {
+		actuator_max(0) = lastM0 == 0 ? 1.f : 0.1f;
+		actuator_max(1) = lastM1 == 0 ? 1.f : 0.1f;
+		actuator_max(2) = lastM2 == 0 ? 1.f : 0.1f;
+		actuator_max(3) = lastM3 == 0 ? 1.f : 0.1f;
+		actuator_max(4) = lastM4 == 0 ? 1.f : 0.1f;
+		actuator_max(5) = lastM5 == 0 ? 1.f : 0.1f;
+	}
+	else {
+		actuator_max(0) = _param_ca_act0_max.get();
+		actuator_max(1) = _param_ca_act1_max.get();
+		actuator_max(2) = _param_ca_act2_max.get();
+		actuator_max(3) = _param_ca_act3_max.get();
+		actuator_max(4) = _param_ca_act4_max.get();
+		actuator_max(5) = _param_ca_act5_max.get();
+	}
+
 	_control_allocation->setActuatorMax(actuator_max);
 }
 
@@ -246,15 +279,82 @@ ControlAllocator::Run()
 	// Check if parameters have changed
 	if (_parameter_update_sub.updated()) {
 		// clear update
+		PX4_INFO("Param Update requested manually.");
 		parameter_update_s param_update;
 		_parameter_update_sub.copy(&param_update);
 
-		if (_control_allocation) {
-			_control_allocation->updateParameters();
+		if(_param_ftc_enable.get()==1) {
+			if (_control_allocation) {
+				_control_allocation->updateParameters();
+			}
+
+			updateParams();
+			parameters_updated();
 		}
 
-		updateParams();
-		parameters_updated();
+		if(lastFTC != _param_ftc_enable.get()) {
+			lastFTC = _param_ftc_enable.get();
+		}
+		if(lastM0 != _param_faulty_m0.get()) {
+			lastM0 = _param_faulty_m0.get();
+			if(lastM0==0) {
+				_param_ca_act0_max.set(1.0);
+			}
+			else {
+				_param_ca_act0_max.set(0.0);
+			}
+			_param_ca_act0_max.commit();
+		}
+		if(lastM1 != _param_faulty_m1.get()) {
+			lastM1 = _param_faulty_m1.get();
+			if(lastM1==0) {
+				_param_ca_act1_max.set(1.0);
+			}
+			else {
+				_param_ca_act1_max.set(0);
+			}
+			_param_ca_act1_max.commit();
+		}
+		if(lastM2 != _param_faulty_m2.get()) {
+			lastM2 = _param_faulty_m2.get();
+			if(lastM2==0) {
+				_param_ca_act2_max.set(1.0);
+			}
+			else {
+				_param_ca_act2_max.set(0);
+			}
+			_param_ca_act2_max.commit();
+		}
+		if(lastM3 != _param_faulty_m3.get()) {
+			lastM3 = _param_faulty_m3.get();
+			if(lastM3==0) {
+				_param_ca_act3_max.set(1.0);
+			}
+			else {
+				_param_ca_act3_max.set(0);
+			}
+			_param_ca_act3_max.commit();
+		}
+		if(lastM4 != _param_faulty_m4.get()) {
+			lastM4 = _param_faulty_m4.get();
+			if(lastM4==0) {
+				_param_ca_act4_max.set(1.0);
+			}
+			else {
+				_param_ca_act4_max.set(0);
+			}
+			_param_ca_act4_max.commit();
+		}
+		if(lastM5 != _param_faulty_m5.get()) {
+			lastM5 = _param_faulty_m5.get();
+			if(lastM5==0) {
+				_param_ca_act5_max.set(1.0);
+			}
+			else {
+				_param_ca_act5_max.set(0);
+			}
+			_param_ca_act5_max.commit();
+		}
 	}
 
 	if (_control_allocation == nullptr || _actuator_effectiveness == nullptr) {
@@ -484,6 +584,19 @@ int ControlAllocator::task_spawn(int argc, char *argv[])
 int ControlAllocator::print_status()
 {
 	PX4_INFO("Running");
+
+	ActuatorEffectiveness *tmp = nullptr;
+
+	tmp = new ActuatorEffectivenessMultirotor();
+
+	if (tmp == nullptr) {
+		PX4_INFO("ActuatorEffectiveness: None");
+	}
+	else {
+		PX4_INFO("ActuatorEffectiveness: Assigned");
+	}
+
+	update_effectiveness_matrix_if_needed();
 
 	// Print current allocation method
 	switch (_allocation_method_id) {

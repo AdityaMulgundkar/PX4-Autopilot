@@ -142,3 +142,83 @@ PARAM_DEFINE_INT32(FD_EXT_ATS_TRIG, 1900);
  * @group Failure Detector
  */
 PARAM_DEFINE_INT32(FD_ESCS_EN, 1);
+
+/**
+ * Custom FTC Flag
+ *
+ * Motor failure correction can be turned ON or OFF
+ *
+ * @group Fault Tolerant Control
+ * @unit ms
+ * @min 0
+ * @max 1
+ * @increment 1
+ */
+PARAM_DEFINE_INT32(FTC_ENABLE, 0);
+
+/**
+ * Custom Failure introduction for Motor 0
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FAULTY_M0, 0);
+
+/**
+ * Custom Failure introduction for Motor 1
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FAULTY_M1, 0);
+
+/**
+ * Custom Failure introduction for Motor 2
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FAULTY_M2, 0);
+
+/**
+ * Custom Failure introduction for Motor 3
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FAULTY_M3, 0);
+
+/**
+ * Custom Failure introduction for Motor 4
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FAULTY_M4, 0);
+
+/**
+ * Custom Failure introduction for Motor 5
+ *
+ * Motor failure triggers only if the throttle threshold and the
+ * current to throttle threshold are violated for this time.
+ *
+ * @boolean
+ * @group Fault Tolerant Control
+ */
+PARAM_DEFINE_INT32(FAULTY_M5, 0);
+// PARAM_DEFINE_INT32(CA_FAULT0, 0);

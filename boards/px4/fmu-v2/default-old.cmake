@@ -61,7 +61,7 @@ px4_add_board(
 		#uavcan
 	MODULES
 		airspeed_selector
-		attitude_estimator_q
+		#attitude_estimator_q
 		battery_status
 		#camera_feedback
 		commander
@@ -75,9 +75,9 @@ px4_add_board(
 		fw_pos_control_l1
 		#gyro_calibration
 		#gyro_fft
-		# land_detector
+		land_detector
 		#landing_target_estimator
-		# load_mon
+		load_mon
 		#local_position_estimator
 		# logger
 		mavlink
@@ -88,14 +88,14 @@ px4_add_board(
 		#micrortps_bridge
 		navigator
 		rc_update
-		# rover_pos_control
+		#rover_pos_control
 		sensors
 		#sih
 		#temperature_compensation
-		# uuv_att_control
-		# uuv_pos_control
-		# vmount
-		# vtol_att_control
+		#uuv_att_control
+		#uuv_pos_control
+		#vmount
+		#vtol_att_control
 	SYSTEMCMDS
 		bl_update
 		#dmesg
@@ -122,7 +122,7 @@ px4_add_board(
 		#serial_test
 		#system_time
 		top
-		topic_listener
+		#topic_listener
 		tune_control
 		uorb
 		#usb_connected
