@@ -618,7 +618,7 @@ ControlAllocator::update_effectiveness_matrix_if_needed(EffectivenessUpdateReaso
 
 		for (int i = 0; i < _num_control_allocation; ++i) {
 			_control_allocation[i]->setActuatorMin(minimum[i]);
-			if(_param_ftc_enable.get()==0) {
+			if(lastFTC) {
 				matrix::Vector<float, NUM_ACTUATORS> temp_max[6] = {};
 				// temp_max[0](0) = 0.01f;
 				temp_max[0](0) = lastM0 == 0 ? 1.f : 0.01f;
@@ -656,9 +656,12 @@ ControlAllocator::update_effectiveness_matrix_if_needed(EffectivenessUpdateReaso
 			}
 
 			// Assign control effectiveness matrix
+			if(lastFTC == 1) {
 			int total_num_actuators = config.num_actuators_matrix[i];
 			_control_allocation[i]->setEffectivenessMatrix(config.effectiveness_matrices[i], config.trim[i],
 					config.linearization_point[i], total_num_actuators, reason == EffectivenessUpdateReason::CONFIGURATION_UPDATE);
+
+			}
 		}
 
 		trims.timestamp = hrt_absolute_time();
