@@ -1224,12 +1224,14 @@ void
 MavlinkReceiver::handle_message_set_actuator_control_target(mavlink_message_t *msg)
 {
 	// TODO
+	/*
 #if defined(ENABLE_LOCKSTEP_SCHEDULER)
 	PX4_ERR("SET_ACTUATOR_CONTROL_TARGET not supported with lockstep enabled");
 	PX4_ERR("Please disable lockstep for actuator offboard control:");
 	PX4_ERR("https://dev.px4.io/master/en/simulation/#disable-lockstep-simulation");
 	return;
 #endif
+	*/
 
 	mavlink_set_actuator_control_target_t actuator_target;
 	mavlink_msg_set_actuator_control_target_decode(msg, &actuator_target);
