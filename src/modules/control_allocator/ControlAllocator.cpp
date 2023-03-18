@@ -45,6 +45,7 @@
 #include <circuit_breaker/circuit_breaker.h>
 #include <mathlib/math/Limits.hpp>
 #include <mathlib/math/Functions.hpp>
+#include <uORB/topics/vehicle_rates_setpoint.h>
 
 using namespace matrix;
 using namespace time_literals;
@@ -516,6 +517,24 @@ ControlAllocator::Run()
 		publish_control_allocator_status();
 		_last_status_pub = now;
 	}
+
+	/*
+	START loop for sending back desired rate values
+	*/
+	// use rates setpoint topic
+	// vehicle_rates_setpoint_s vehicle_rates_setpoint{};
+
+	uORB::Subscription _att_rates_sp_sub{ORB_ID(vehicle_rates_setpoint)};
+	vehicle_rates_setpoint_s att_rates_sp{};
+	_att_rates_sp_sub.copy(&att_rates_sp);
+	PX4_INFO("Des Rates:\t%8.4f\t%8.4f\t%8.4f",
+                    (double)att_rates_sp.roll,
+                    (double)att_rates_sp.pitch,
+                    (double)att_rates_sp.yaw);
+
+	/*
+	END loop for sending back desired rate values
+	*/
 
 	perf_end(_loop_perf);
 }
