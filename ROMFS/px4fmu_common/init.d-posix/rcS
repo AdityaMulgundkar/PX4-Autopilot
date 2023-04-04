@@ -272,3 +272,5 @@ fi
 
 mavlink boot_complete
 replay trystart
+
+mavlink stream -r 50 -s DESIRED_VELOCITY_RATES -u 14558

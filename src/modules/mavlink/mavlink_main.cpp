@@ -60,6 +60,8 @@
 #include "mavlink_receiver.h"
 #include "mavlink_main.h"
 
+#include <../../src/modules/mavlink/mavlink/generated/include/mavlink/v2.0/common/common.h>
+
 // Guard against MAVLink misconfiguration
 #ifndef MAVLINK_CRC_EXTRA
 #error MAVLINK_CRC_EXTRA has to be defined on PX4 systems
@@ -1525,6 +1527,7 @@ Mavlink::configure_streams_to_default(const char *configure_single_stream)
 		configure_stream_local("VFR_HUD", 4.0f);
 		configure_stream_local("VIBRATION", 0.1f);
 		configure_stream_local("WIND_COV", 0.5f);
+		configure_stream_local("DESIRED_VELOCITY_RATES", 15.0f);
 
 #if !defined(CONSTRAINED_FLASH)
 		configure_stream_local("DEBUG", 1.0f);

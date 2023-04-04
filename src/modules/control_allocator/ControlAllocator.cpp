@@ -527,10 +527,10 @@ ControlAllocator::Run()
 	uORB::Subscription _att_rates_sp_sub{ORB_ID(vehicle_rates_setpoint)};
 	vehicle_rates_setpoint_s att_rates_sp{};
 	_att_rates_sp_sub.copy(&att_rates_sp);
-	PX4_INFO("Des Rates:\t%8.4f\t%8.4f\t%8.4f",
-                    (double)att_rates_sp.roll,
-                    (double)att_rates_sp.pitch,
-                    (double)att_rates_sp.yaw);
+	// PX4_INFO("Des Rates:\t%8.4f\t%8.4f\t%8.4f",
+        //             (double)att_rates_sp.roll,
+        //             (double)att_rates_sp.pitch,
+        //             (double)att_rates_sp.yaw);
 
 	/*
 	END loop for sending back desired rate values

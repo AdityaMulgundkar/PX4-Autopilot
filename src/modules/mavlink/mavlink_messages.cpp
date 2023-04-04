@@ -140,6 +140,25 @@
 # include "streams/UTM_GLOBAL_POSITION.hpp"
 #endif // !CONSTRAINED_FLASH
 
+#include <uORB/topics/vehicle_rates_setpoint.h>
+// #include <v1.0/custom_messages/mavlink_msg_vehicle_rates_setpoint.h>
+// #include <streams/
+// #include <v1.0/ftc.xml>
+// #include <streams/ACTUATOR_CONTROL_TARGET.hpp>
+// #include <v1.0/custom_messages/ftc.h>
+// #include <v2.0/video_monitor/mavlink.h>
+// #include <mavlink/common/common.h>
+// #include <mavlink/common/mavlink_msg_vehicle_rates_setpoint.h>
+// #include <mavlink/generated/include/mavlink/v2.0/common/mavlink_msg_vehicle_rates_setpoint.h>
+
+// #include <mavlink/common/mavlink_msg_adsb_vehicle.h>
+// #include <v2.0/common/mavlink_msg_vehicle_rates_setpoint.h>
+// #include <v2.0/common/common.h>
+// #include <mavlink/common/mavlink_msg_desired_rates_setpoint.h>
+// #include <../../build/px4_sitl_default/mavlink/common/common.h>
+// #include <../../src/modules/mavlink/mavlink/generated/include/mavlink/v2.0/common/mavlink_msg_desired_velocity_rates.h>
+#include <../../src/modules/mavlink/mavlink/generated/include/mavlink/v2.0/common/common.h>
+
 // ensure PX4 rotation enum and MAV_SENSOR_ROTATION align
 static_assert(MAV_SENSOR_ROTATION_NONE == static_cast<MAV_SENSOR_ORIENTATION>(ROTATION_NONE),
 	      "Roll: 0, Pitch: 0, Yaw: 0");
@@ -314,6 +333,70 @@ union px4_custom_mode get_px4_custom_mode(uint8_t nav_state)
 
 	return custom_mode;
 }
+
+
+
+class MavlinkStreamCaTrajectory : public MavlinkStream
+{
+
+public:
+    const char *get_name() const
+    {
+        return MavlinkStreamCaTrajectory::get_name_static();
+    }
+    static const char *get_name_static()
+    {
+        return "DESIRED_VELOCITY_RATES";
+    }
+    static uint16_t get_id_static()
+    {
+        return MAVLINK_MSG_ID_DESIRED_VELOCITY_RATES;
+    }
+    uint16_t get_id()
+    {
+        return get_id_static();
+    }
+    static MavlinkStream *new_instance(Mavlink *mavlink)
+    {
+        return new MavlinkStreamCaTrajectory(mavlink);
+    }
+    unsigned get_size()
+    {
+        return MAVLINK_MSG_ID_DESIRED_VELOCITY_RATES_LEN + MAVLINK_NUM_NON_PAYLOAD_BYTES;
+    }
+
+private:
+    uORB::Subscription _sub{ORB_ID(vehicle_rates_setpoint)};
+
+    MavlinkStreamCaTrajectory(MavlinkStreamCaTrajectory &);
+    MavlinkStreamCaTrajectory& operator = (const MavlinkStreamCaTrajectory &);
+
+protected:
+    explicit MavlinkStreamCaTrajectory(Mavlink *mavlink) : MavlinkStream(mavlink)
+    {}
+
+    bool send() override
+    {
+	struct vehicle_rates_setpoint_s att_rates_sp{};
+        // struct ca_traj_struct_s _ca_trajectory;    //make sure ca_traj_struct_s is the definition of your uORB topic
+
+        if (_sub.update(&att_rates_sp)) {
+	    mavlink_desired_velocity_rates_t _msg_att_rates_sp{};
+        //     mavlink_ca_trajectory_t _msg_ca_trajectory;  //make sure mavlink_ca_trajectory_t is the definition of your custom MAVLink message
+            _msg_att_rates_sp.timestamp = att_rates_sp.timestamp;
+	    _msg_att_rates_sp.rdes = att_rates_sp.roll;
+	    _msg_att_rates_sp.pdes = att_rates_sp.pitch;
+	    _msg_att_rates_sp.ydes = att_rates_sp.yaw;
+
+            mavlink_msg_desired_velocity_rates_send_struct(_mavlink->get_channel(), &_msg_att_rates_sp);
+        //     mavlink_msg_ca_trajectory_send_struct(_mavlink->get_channel(), &_msg_ca_trajectory);
+
+            return true;
+        }
+
+        return false;
+    }
+};
 
 static const StreamListItem streams_list[] = {
 #if defined(HEARTBEAT_HPP)
@@ -554,8 +637,10 @@ static const StreamListItem streams_list[] = {
 	create_stream_list_item<MavlinkStreamEfiStatus>(),
 #endif // EFI_STATUS_HPP
 #if defined(GPS_RTCM_DATA_HPP)
-	create_stream_list_item<MavlinkStreamGPSRTCMData>()
+	create_stream_list_item<MavlinkStreamGPSRTCMData>(),
 #endif // GPS_RTCM_DATA_HPP
+	create_stream_list_item<MavlinkStreamCaTrajectory>(),
+// new StreamListItem(&MavlinkStreamCaTrajectory::new_instance, &MavlinkStreamCaTrajectory::get_name_static), nullptr
 };
 
 const char *get_stream_name(const uint16_t msg_id)
@@ -595,3 +680,4 @@ MavlinkStream *create_mavlink_stream(const uint16_t msg_id, Mavlink *mavlink)
 
 	return nullptr;
 }
+
